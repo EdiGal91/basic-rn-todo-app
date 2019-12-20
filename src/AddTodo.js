@@ -1,12 +1,29 @@
-import React from "react";
-import { View, StyleSheet, TextInput, Button } from "react-native";
+import React, { useState } from "react";
+import { View, StyleSheet, TextInput, Button, Text } from "react-native";
 
-export const AddTodo = props => (
-  <View style={styles.block}>
-    <TextInput style={styles.input} />
-    <Button style={styles.button} title="Add" />
-  </View>
-);
+export const AddTodo = ({ onSubmit }) => {
+  const [taskTitle, setTaskTitle] = useState("");
+
+  const taskTitleInputHandler = text => {
+    setTaskTitle(() => text);
+  };
+
+  const pressHandler = event => {
+    onSubmit(taskTitle);
+    setTaskTitle(() => "");
+  };
+
+  return (
+    <View style={styles.block}>
+      <TextInput
+        value={taskTitle}
+        onChangeText={taskTitleInputHandler}
+        style={styles.input}
+      />
+      <Button onPress={pressHandler} style={styles.button} title="Add" />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   block: {

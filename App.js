@@ -1,10 +1,22 @@
 import React from "react";
-import { StyleSheet, Text, Picker, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { Navbar } from "./src/Navbar";
+import { AddTodo } from "./src/AddTodo";
 
 export default function App() {
-  return <View style={styles.container}></View>;
+  return (
+    <View>
+      <Navbar title="Todo App"></Navbar>
+      <View style={styles.container}>
+        <AddTodo />
+      </View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-  container: {}
+  container: {
+    paddingHorizontal: 30,
+    paddingVertical: 20
+  }
 });

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Alert } from "react-native";
 import { Navbar } from "./src/Navbar";
 import { AddTodo } from "./src/AddTodo";
 import { Todos } from "./src/Todos";
@@ -9,6 +9,7 @@ export default function App() {
 
   const addTodo = title => {
     if (!title) {
+      Alert.alert("You need to whire something");
       return;
     }
     const id = Date.now().toString();
@@ -19,7 +20,6 @@ export default function App() {
         title
       }
     ]);
-    console.log(todos.length, id, title);
   };
 
   return (

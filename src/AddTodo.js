@@ -19,8 +19,16 @@ export const AddTodo = ({ onSubmit }) => {
         value={taskTitle}
         onChangeText={taskTitleInputHandler}
         style={styles.input}
+        placeholder="What you need to do?"
+        autoCapitalize="sentences"
+        autoCompleteType="off "
       />
-      <Button onPress={pressHandler} style={styles.button} title="Add" />
+      <Button
+        disabled={taskTitle.length < 1}
+        onPress={pressHandler}
+        style={styles.button}
+        title="Add"
+      />
     </View>
   );
 };

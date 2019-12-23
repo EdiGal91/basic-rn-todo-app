@@ -1,11 +1,24 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, Alert } from "react-native";
+import { StyleSheet, View, Alert } from "react-native";
 import { Navbar } from "./src/Navbar";
 import { AddTodo } from "./src/AddTodo";
 import { Todos } from "./src/Todos";
 
 export default function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([
+    { id: 1, title: "Buy Milk" },
+    { id: 2, title: "Buy Bread" },
+    { id: 3, title: "Buy cigarettes" },
+    { id: 4, title: "Buy Milk" },
+    { id: 5, title: "Buy Bread" },
+    { id: 6, title: "Buy cigarettes" },
+    { id: 7, title: "Buy Milk" },
+    { id: 8, title: "Buy Bread" },
+    { id: 9, title: "Buy cigarettes" },
+    { id: 10, title: "Buy Milk" },
+    { id: 11, title: "Buy Bread" },
+    { id: 12, title: "Buy cigarettes" }
+  ]);
 
   const addTodo = title => {
     if (!title) {
@@ -22,12 +35,21 @@ export default function App() {
     ]);
   };
 
+  const removeTodo = todoId => {
+    console.log(todoId);
+    setTodos(prevTodos => prevTodos.filter(({ id }) => id !== todoId));
+  };
+
   return (
     <View>
       <Navbar title="Todo App"></Navbar>
       <View style={styles.container}>
         <AddTodo onSubmit={addTodo} />
-        <Todos todos={todos}></Todos>
+        <Todos
+          style={styles.todos}
+          todos={todos}
+          onLongPressed={removeTodo}
+        ></Todos>
       </View>
     </View>
   );
@@ -37,5 +59,8 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 30,
     paddingVertical: 20
+  },
+  todos: {
+    paddingBottom: 50
   }
 });

@@ -21,7 +21,7 @@ export const AddTodo = ({ onSubmit }) => {
         style={styles.input}
         placeholder="What you need to do?"
         autoCapitalize="sentences"
-        autoCompleteType="off "
+        autoCompleteType="off"
       />
       <Button
         disabled={taskTitle.length < 1}

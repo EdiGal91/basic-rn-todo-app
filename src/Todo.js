@@ -1,10 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
 
 export const Todo = ({ todo }) => {
   return (
-    <View>
+    <View style={styles.todo}>
       <Text>{todo.title}</Text>
+      <Button title="X" />
     </View>
   );
 };
